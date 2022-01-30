@@ -178,3 +178,24 @@
     justify-content: center;
   }
 }
+
+/* LOGOUT */
+.logout {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .wrapper {
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    > h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  }
+}

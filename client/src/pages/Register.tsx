@@ -135,7 +135,7 @@ const Register: React.FC = () => {
               />
             </div>
             <div className='element btn-wrapper'>
-              <button className='btn btn-primary'>Login</button>
+              <button className='btn btn-primary'>Sign up</button>
             </div>
           </form>
         </div>

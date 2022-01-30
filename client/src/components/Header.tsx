@@ -9,7 +9,7 @@ const Header: React.FC = () => {
 
   const handleLogOut = () => {
     sessionStorage.clear()
-    navigate('/login')
+    navigate('/logout')
   }
 
   if (!token) {
