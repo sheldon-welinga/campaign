@@ -1,44 +1,46 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AppContext } from "../context";
 
 const Header: React.FC = () => {
-  const token = sessionStorage.getItem('__token__')
-  const userStorageInfo = sessionStorage.getItem('__userInfo__')
-  const userInfo = JSON.parse(userStorageInfo ?? '{}')
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const { logOut, userCredentials, token } = useContext(AppContext);
 
   const handleLogOut = () => {
-    sessionStorage.clear()
-    navigate('/logout')
-  }
+    logOut?.();
+    navigate("/logout");
+  };
 
   if (!token) {
-    return null
+    return null;
   }
 
   return (
-    <nav className='header'>
+    <nav className="header">
       <div>
-        <Link to='/dashboard' className='nav-item'>
+        <Link to="/dashboard" className="nav-item">
           Home
         </Link>
-        <Link to='/about-us' className='nav-item'>
+        <Link to="/about-us" className="nav-item">
           About Us
         </Link>
-        <Link to='/partners' className='nav-item'>
+        <Link to="/posts" className="nav-item">
+          Posts
+        </Link>
+        <Link to="/partners" className="nav-item">
           Partners
         </Link>
       </div>
-      <div className='nav-item-right'>
-        {userInfo && (
-          <button className='btn btn-outline'>{userInfo?.name}</button>
+      <div className="nav-item-right">
+        {userCredentials && (
+          <button className="btn btn-outline">{userCredentials.name}</button>
         )}
-        <button className='btn btn-outline' onClick={handleLogOut}>
+        <button className="btn btn-outline" onClick={handleLogOut}>
           Log Out
         </button>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

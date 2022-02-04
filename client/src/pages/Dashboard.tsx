@@ -1,38 +1,43 @@
-import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AppContext } from "../context";
 
 const Dashboard = () => {
-  const navigate = useNavigate()
-  const token = sessionStorage.getItem('__token__')
+  const navigate = useNavigate();
+  const { token } = useContext(AppContext);
 
   useEffect(() => {
     if (!token) {
-      navigate('/login')
+      navigate("/login");
     }
-  }, [navigate, token])
+  }, [navigate, token]);
 
   return (
-    <div className='dashboard bg-orange'>
-      <div className='wrapper'>
-        <div className='image'>
-          <img src='/images/world.jpeg' alt='world' />
+    <div className="dashboard bg-orange">
+      <div className="wrapper">
+        <div className="image">
+          <img src="/images/world.jpeg" alt="world" />
         </div>
-        <div className='content'>
+        <div className="content">
           <h1>"With awareness come responsibility and choice"</h1>
-          <button className='btn btn-purple'>Raise a cause</button>
+          <Link to="/posts" className="btn btn-purple">
+            Raise a cause
+          </Link>
         </div>
       </div>
-      <div className='wrapper'>
-        <div className='content'>
+      <div className="wrapper">
+        <div className="content">
           <h1>"When you support a small business, you support a dream"</h1>
-          <button className='btn btn-purple'>Learn more</button>
+          <Link to="/about-us" className="btn btn-purple">
+            Learn more
+          </Link>
         </div>
-        <div className='image'>
-          <img src='/images/laptop.jpeg' alt='laptop and person' />
+        <div className="image">
+          <img src="/images/laptop.jpeg" alt="laptop and person" />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;
