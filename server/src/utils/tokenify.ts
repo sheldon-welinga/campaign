@@ -1,19 +1,20 @@
 import { ObjectId } from 'mongoose';
-import jwt from 'jsonwebtoken';
 require('dotenv').config();
 
-type TokenProps = {
-  id: ObjectId;
-};
+export module Tokenify {
+  const jwt = require('jsonwebtoken');
 
-type PayloadProps = TokenProps;
-
-const tokenify = (user: TokenProps): string => {
-  const payload: PayloadProps = {
-    id: user.id,
+  type TokenProps = {
+    id: ObjectId;
   };
 
-  return jwt.sign(payload, process.env.JWT_SECRET ?? '', { expiresIn: '7d' });
-};
+  type PayloadProps = TokenProps;
 
-export { tokenify };
+  export const tokenify = (user: TokenProps): string => {
+    const payload: PayloadProps = {
+      id: user.id,
+    };
+
+    return jwt.sign(payload, process.env.JWT_SECRET ?? '', { expiresIn: '7d' });
+  };
+}

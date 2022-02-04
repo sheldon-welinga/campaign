@@ -15,3 +15,7 @@ export type UserLoginProps = {
     email: string;
   };
 };
+
+export type AuthorizationPayloadProps = {
+  user: ObjectId;
+};

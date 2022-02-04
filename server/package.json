@@ -10,7 +10,7 @@
     "build": "tsc",
     "start": "yarn build && node ./dist/app.js",
     "dev": "NODE_OPTIONS='--no-warnings --loader ts-node/esm' nodemon --watch './**/*.ts' --exec 'ts-node' ./src/app.ts",
-    "format": "prettier --write '**/*.{js,json,md,ts,tsx,yaml,yml,sh,graphql}'"
+    "format": "prettier --write '**/*.{js,json,md,ts}'"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
